@@ -1,0 +1,17 @@
+__pycache__/
+CIFAR-FS/cifar100/
+*.DS_Store
+*.swp
+*.pyc
+*.pth.tar
+*.pth
+*.cluster
+*.log
+*.out
+*.err
+*.txt
+*.yaml
+*.jpg
+*.zip
+*.csv
+*.pickle
