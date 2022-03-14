@@ -11,7 +11,7 @@ Adopted from **A Baseline for Few-Shot Image Classification** [repo](https://git
     - matplotlib, seaborn
 
 ## Datasets
-Refer to *CIFAR-FS/README.md*
+We use the CIFAR-FS dataset to test codebase setup, please refer to *CIFAR-FS/README.md* to prepare the dataset.
 
 ## Codebase Testing
 ```
