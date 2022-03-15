@@ -90,6 +90,7 @@ def main():
         image_size=image_size)
     backbone.load_state_dict(torch.load(parameter_path)['model'])
     backbone = backbone.cuda()
+    print(backbone)
 
     hardness_model = Hardness()
 
@@ -110,19 +111,19 @@ def main():
         + str(train_and_val) + '_' + str(non_transductive)
     os.makedirs('results', exist_ok=True)
     print('\t mean \t standard-deviation \t confidence-interval')
-    for episode in tqdm(range(1, num_episodes + 1)):
+    for episode in range(1, num_episodes + 1):
         support, query = data[episode]
         init_accuracy, final_accuracy, hardness = fine_tune(backbone, relu,
             lamb, support, query, non_transductive, hardness_model)
         results['init_accuracy'].append(init_accuracy)
         results['final_accuracy'].append(final_accuracy)
         results['hardness'].append(hardness)
-        tqdm.write('Init \t %2.2f \t\t %2.2f \t\t\t %2.2f' % (
+        print('Init \t %2.2f \t\t %2.2f \t\t\t %2.2f' % (
             np.mean(results['init_accuracy']),
             np.std(results['init_accuracy']),
             1.96 * np.std(results['init_accuracy']) / (episode ** 0.5))
             )
-        tqdm.write('Final \t %2.2f \t\t %2.2f \t\t\t %2.2f' % (
+        print('Final \t %2.2f \t\t %2.2f \t\t\t %2.2f' % (
             np.mean(results['final_accuracy']),
             np.std(results['final_accuracy']),
             1.96 * np.std(results['final_accuracy']) / (episode ** 0.5))

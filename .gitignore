@@ -1,5 +1,6 @@
-__pycache__/
 CIFAR-FS/cifar100/
+__pycache__/
+tmp/
 *.DS_Store
 *.swp
 *.pyc

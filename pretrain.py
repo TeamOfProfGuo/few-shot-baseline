@@ -37,8 +37,6 @@ def main(
     mixup = 0.25
     gpu = setup_distrib(gpu)
     num_gpus = num_distrib() or 1
-    # gpu = 'cuda:0' # gpu
-    # num_gpus = 1
     csv_file_name = params['csv_file_name']
     parameter_file_name = params['parameter_file_name']
 
@@ -80,7 +78,9 @@ def main(
             name=parameter_file_name
             )
         ]
-    # learn.to_distributed(gpu, cache_dir='/tmp')
-    # learn.to_fp16(dynamic=True)
-    learn.fit(epochs)
+    print(learn)
+    learn.to_distributed(gpu, cache_dir='/scratch/hl3797/few-shot-baseline/tmp')
+    learn.to_fp16(dynamic=True)
+    # learn.fit(epochs)
+    learn.fit(3)
 
